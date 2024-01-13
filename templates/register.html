@@ -7,29 +7,25 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>NLP APP | Login</title>
+        <title>NLP APP | Register</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h2>Welcome to the NLP Web App</h2><br>
-        <h3>Login Here</h3>
-        <!-- 
-            * name is used to identify the key of the
-            * data sent through post. Can be accessed 
-            * similar to a key in dictionary.
-        -->
-        <form action="/perform-login" method="post">
+        <h3>Register Here</h3>
+        <form action="/perform-registration" method="post">
+            <label for="username">User Name</label><br>
+            <input type="text" name="username" id="username" required><br><br>
             <label for="email">Email Id</label><br>
             <input type="email" name="email_id" id="email" required><br><br>
             <label for="password">Password</label><br>
             <input type="password" name="password" id="password" required><br><br>
-            <input type="submit" value="Login">
+            <input type="submit" value="Register">
         </form>
 
-        <p>Not a Member? | <a href="/register">Register Here</a></p>
-        
+        <p>Already a Member? | <a href="/">Login Here</a></p>
+      
         <script src="" async defer></script>
     </body>
 </html>

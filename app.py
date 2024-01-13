@@ -6,13 +6,19 @@ app = Flask(__name__)
 def login():
     return render_template('login.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
 @app.route('/perform-login',methods=['POST'])
 def perform_login():
     response = request.form.to_dict()
     return response
 
-# TODO 1. Make a Registration page.
-# TODO 2. Login and Registration page link
+@app.route('/perform-registration',methods=['POST'])
+def perform_registration():
+    response = request.form.to_dict()
+    return response
 
 if __name__ == "__main__":
     app.run(port= 8080,
