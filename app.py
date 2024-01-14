@@ -1,4 +1,7 @@
-from flask import Flask, url_for, redirect, render_template, request
+from flask import Flask, render_template, request
+from flask import redirect, url_for
+from data import save_registration_details
+
 
 app = Flask(__name__)
 
@@ -18,8 +21,25 @@ def perform_login():
 @app.route('/perform-registration',methods=['POST'])
 def perform_registration():
     response = request.form.to_dict()
-    return response
+    email = response['email_id']
+    username = response['username']
+    password = response['password']
+    # create the update dictionary 
+    # * in format {email:{'user_name': username, 'password': password}
+    update_dict = {email: {'username': username,
+                           'password': password}}
 
+    # use the dictionary to update the json file
+    result = save_registration_details(details= update_dict)
+
+    if result:
+        message = 'Registration Successful'
+        return render_template('login.html',message= message)
+    else:
+        message = "Already Registered, Proceed to Login"
+        return render_template('register.html',message= message)
+    
+    
 if __name__ == "__main__":
     app.run(port= 8080,
             debug= True)

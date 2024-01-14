@@ -14,7 +14,12 @@
     </head>
     <body>
         <h2>Welcome to the NLP Web App</h2><br>
-        <h3>Login Here</h3>
+        <h3>Login Here</h3><br>
+        {% if message %}
+            <p style="color: green">{{ message }}</p>
+        {% endif %}
+
+
         <!-- 
             * name is used to identify the key of the
             * data sent through post. Can be accessed 

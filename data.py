@@ -19,23 +19,23 @@ def save_registration_details(details:dict):
     # read the contents of the json file
     with open(json_file,mode='r') as f:
         json_contents = json.load(f)
-    
-    if details['email'] in json_contents:
-        return 0
-    
-    else:
+   
+    if list(details.keys())[0] not in json_contents: 
         # update the contents of the json file
-        dict(json_contents).update(details)
+        json_contents.update(details)
     
         # write the updates back to the json file
-        # * Write in this format {email:{user_name: username, password: password}
+        # * Write in this format {email:{'user_name': username, 'password': password}
         with open(json_file,mode='w') as f:
-            json.dump(json_contents,f)
+            json.dump(obj= json_contents,fp= f,indent= 4)
 
         return 1
+    else:
+        return 0
     
     
-def verify_user(email,password):
+    
+def verify_user(email:str,password:str):
     json_file = root_path / 'users.json'
     
     # read the contents of the json file
