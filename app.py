@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask import redirect, url_for
-from data import save_registration_details
+from data import save_registration_details, verify_user
 
 
 app = Flask(__name__)
@@ -16,8 +16,20 @@ def register():
 @app.route('/perform-login',methods=['POST'])
 def perform_login():
     response = request.form.to_dict()
-    return response
-
+    email = response['email_id']
+    password = response['password']
+    
+    # verify the user details
+    result = verify_user(email= email,
+                         password= password)
+    
+    if result:
+        return 'Welcome User'
+    else:
+        return render_template('login.html',error= 'Check Email/Password')
+    
+    
+    
 @app.route('/perform-registration',methods=['POST'])
 def perform_registration():
     response = request.form.to_dict()

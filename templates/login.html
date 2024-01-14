@@ -31,7 +31,10 @@
             <label for="password">Password</label><br>
             <input type="password" name="password" id="password" required><br><br>
             <input type="submit" value="Login">
-        </form>
+        </form><br>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
 
         <p>Not a Member? | <a href="/register">Register Here</a></p>
         

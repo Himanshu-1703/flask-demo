@@ -45,7 +45,7 @@ def verify_user(email:str,password:str):
     # verify if email is matching
     if email in json_contents:
         # if passed, verify if password is same
-        if password == json_contents['email']['password']:
+        if password == json_contents[email]['password']:
             return 1
         else:
             return 0      
