@@ -24,7 +24,7 @@ def perform_login():
                          password= password)
     
     if result:
-        return 'Welcome User'
+        return redirect(url_for('welcome'))
     else:
         return render_template('login.html',error= 'Check Email/Password')
     
@@ -51,7 +51,24 @@ def perform_registration():
         message = "Already Registered, Proceed to Login"
         return render_template('register.html',message= message)
     
-    
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/ner')
+def ner():
+    return render_template('ner.html')    
+
+@app.route('/sentiment')
+def sentiment():
+    return render_template('sentiment.html')
+
+@app.route('/abuse')
+def abuse():
+    return render_template('abuse.html')
+
+
+
 if __name__ == "__main__":
     app.run(port= 8080,
             debug= True)
